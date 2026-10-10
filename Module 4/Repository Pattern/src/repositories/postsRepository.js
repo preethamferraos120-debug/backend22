@@ -20,7 +20,7 @@ const postsRepository = {
   },
 
   create(fields) {
-    const post = { id: nextId++, ...fields };
+    const post = { ...fields, id: nextId++ };
     posts.set(post.id, post);
     return { ...post };
   },
