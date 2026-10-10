@@ -23,6 +23,7 @@ function createPost(fields) {
 }
 
 function updatePost(id, patch) {
+  patch = patch || {};
   const allowedPatch = {};
   if (patch.title !== undefined) allowedPatch.title = patch.title;
   if (patch.body !== undefined) allowedPatch.body = patch.body;
