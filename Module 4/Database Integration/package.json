@@ -7,10 +7,14 @@
     "prisma:format": "prisma format",
     "prisma:validate": "prisma validate",
     "prisma:generate": "prisma generate",
-    "prisma:seed": "node prisma/seed.js"
+    "prisma:migrate": "prisma migrate dev --name relational_community_schema",
+    "prisma:deploy": "prisma migrate deploy",
+    "prisma:seed": "node prisma/seed.js",
+    "db:setup": "prisma migrate deploy && prisma generate && node prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0"
   },
   "devDependencies": {
