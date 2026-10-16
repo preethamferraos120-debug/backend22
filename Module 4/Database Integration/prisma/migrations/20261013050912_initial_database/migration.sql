@@ -2,7 +2,7 @@
 CREATE TABLE "User" (
   "id" SERIAL NOT NULL, "name" TEXT NOT NULL, "email" TEXT,
   "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "updatedAt" TIMESTAMP(3) NOT NULL, CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+  "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 CREATE INDEX "User_name_idx" ON "User"("name");
@@ -10,14 +10,14 @@ CREATE INDEX "User_name_idx" ON "User"("name");
 CREATE TABLE "Post" (
   "id" SERIAL NOT NULL, "title" TEXT NOT NULL, "body" TEXT NOT NULL DEFAULT '',
   "authorId" INTEGER NOT NULL, "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "updatedAt" TIMESTAMP(3) NOT NULL, CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
+  "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );
 CREATE INDEX "Post_authorId_createdAt_idx" ON "Post"("authorId", "createdAt");
 CREATE INDEX "Post_createdAt_idx" ON "Post"("createdAt");
 
 CREATE TABLE "Comment" (
   "id" SERIAL NOT NULL, "body" TEXT NOT NULL, "postId" INTEGER NOT NULL, "authorId" INTEGER NOT NULL,
-  "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" TIMESTAMP(3) NOT NULL,
+  "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT "Comment_pkey" PRIMARY KEY ("id")
 );
 CREATE INDEX "Comment_postId_createdAt_idx" ON "Comment"("postId", "createdAt");
